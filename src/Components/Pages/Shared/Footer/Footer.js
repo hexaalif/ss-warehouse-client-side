@@ -9,19 +9,19 @@ const Footer = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-6">
-                        <h3>Our Address</h3>
+                        <h3  className='mt-3'>Our Address</h3>
                         <p className='fs-5 mt-4'><FontAwesomeIcon icon={faMapPin}/> Ashrafi Villa, Dokkhin Dollai, Kaliarchor, Nobabpur-3501, Cumilla, Bangladesh</p>
                         <p className='fs-5'><FontAwesomeIcon icon={faPhone}/> <b>+8801624352645</b></p>
                     </div>
                     <div className="col-md-3">
-                        <h3>Get News</h3>
+                        <h3 className='mt-3'>Get News</h3>
                         <div className='mt-3'>
                             <input type="email" name="email" id="" placeholder='Get Newsletters' className='rounded w-100'/>
                             <button className='btn btn-dark mt-2'>Send</button>
                         </div>
                     </div>
                     <div className="col-md-3">
-                        <h3>Quick Links</h3>
+                        <h3 className='mt-3'>Quick Links</h3>
                         <h6><Link className='text-light' to="/blogs">Blogs</Link></h6>
                         <h6><Link className='text-light' to="/login">Login</Link></h6>
                         <h6><Link className='text-light' to="/stocks">Stocks</Link></h6>
