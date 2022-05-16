@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import Home from './Components/Pages/Home/Home';
+import Home from './Components/Pages/Home/Home/Home';
 import Header from './Components/Pages/Shared/Header/Header';
 import Blogs from './Components/Pages/Blogs/Blogs';
 import Stocks from './Components/Pages/Stocks/Stocks';

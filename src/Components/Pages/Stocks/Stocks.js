@@ -2,8 +2,8 @@ import React from 'react';
 
 const Stocks = () => {
     return (
-        <div>
-            <h2>Stocks</h2>
+        <div className='container'>
+            <h1 className='text-center fw-bolder pt-5 mt-5'>Stocks</h1>
         </div>
     );
 };
