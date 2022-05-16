@@ -8,6 +8,10 @@ Short Description: this website is based on warehouse where you can get many ite
 live link: 
 ---
 
+---
+5 main points to mention:
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
