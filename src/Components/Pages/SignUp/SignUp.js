@@ -2,42 +2,44 @@ import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
-import auth from '../../../firebase.init';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth'
 import './SignUp.css'
+import auth from '../../../firebase.init';
 
 const SignUp = () => {
-    const [ createUserWithEmailAndPassword, user1 ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true})
+    const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth)
+    let navigate = useNavigate();
 
+    const handleSignUp = (e) =>{
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
 
-    const handleSignUp = (event) =>{
-        event.preventDefault();
-        const name = event.target.value;
-        const email = event.target.email.value;
-        const password = event.target.password.value;
+        if(password.length < 6){
+            alert('sorry, password must be above 6 characters')
+        }
 
         createUserWithEmailAndPassword(email, password);
-        let path = `/`
+        let path = `/home`
         navigate(path)
     }
 
-
-    const [ signInWithGoogle, user, loading, error ] = useSignInWithGoogle(auth)
-    const navigate = useNavigate();
+    const [signInWithGoogle, user] = useSignInWithGoogle(auth)
     if(user){
         navigate('/')
     }
 
-    
 
     return (
         <div className='signUp'>
             <h1 className='text-center fw-bolder p-5'>Sign Up</h1>
-            <Form onSubmit={handleSignUp} className="w-50 d-block m-auto login-form">
+            <Form 
+            onSubmit={handleSignUp} 
+            className="w-50 d-block m-auto login-form">
             <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Label>Your Name</Form.Label>
-            <Form.Control type="name" name="name" placeholder="Enter name" />
+            <Form.Control type="text" name="name" placeholder="Enter name" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
