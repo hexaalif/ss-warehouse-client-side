@@ -24,7 +24,7 @@ const Footer = () => {
                         <h3 className='mt-3'>Quick Links</h3>
                         <h6 className='mb-3'><Link className='text-light' to="/blogs">Blogs</Link></h6>
                         <h6 className='mb-3'><Link className='text-light' to="/login">Login</Link></h6>
-                        <h6><Link className='text-light' to="/stocks">Stocks</Link></h6>
+                        <h6><Link className='text-light' to="/updates">Stocks</Link></h6>
                     </div>
                 </div>
                 <div className="row"></div>
