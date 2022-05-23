@@ -10,6 +10,10 @@ import SignUp from './Components/Pages/SignUp/SignUp';
 import UpdateDetail from './Components/Pages/UpdateDetail/UpdateDetail';
 import Updates from './Components/Pages/Updates/Updates';
 import RequireAuth from './Components/Pages/RequireAuth/RequireAuth';
+import AddItem from './Components/Pages/AddItem/AddItem';
+import ManageItem from './Components/Pages/ManageItem/ManageItem';
+import MyItem from './Components/Pages/MyItem/MyItem';
+import { ToastContainer } from 'react-bootstrap';
 
 function App() {
   return (
@@ -22,12 +26,30 @@ function App() {
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
-        <Route path='/update/:updateId' element={<RequireAuth>
-          <UpdateDetail></UpdateDetail>
-        </RequireAuth>}></Route>
+        <Route path='/update/:updateId' element={
+          <RequireAuth>
+            <UpdateDetail></UpdateDetail>
+          </RequireAuth>}>
+        </Route>
+        <Route path='/additem' element={
+          <RequireAuth>
+            <AddItem></AddItem>
+          </RequireAuth>
+        }></Route>
+        <Route path='/manageitem' element={
+          <RequireAuth>
+            <ManageItem></ManageItem>
+          </RequireAuth>
+        }></Route>
+        <Route path='/myitem' element={
+          <RequireAuth>
+            <MyItem></MyItem>
+          </RequireAuth>
+        }></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer/>
     </div>
   );
 }

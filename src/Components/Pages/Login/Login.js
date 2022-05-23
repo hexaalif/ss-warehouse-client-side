@@ -2,15 +2,17 @@ import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import Loading from '../Shared/Loading/Loading';
 import './Login.css'
+import { toast, ToastContainer } from 'react-toastify';
 
 const Login = () => {
     const emailRef = useRef('')
     const passRef = useRef('')
-    const [signInWithEmailAndPassword, user1, error1] = useSignInWithEmailAndPassword(auth);
+    const [signInWithEmailAndPassword, user1, loading1, error1] = useSignInWithEmailAndPassword(auth);
 
     const handleLogIn = e =>{
         e.preventDefault();
@@ -19,6 +21,11 @@ const Login = () => {
 
         signInWithEmailAndPassword(email, password);
     }
+
+
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+
+
 
     const [ signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const navigate = useNavigate();
@@ -31,16 +38,33 @@ const Login = () => {
     if (error) {
         errorElement = <p className="text-danger">Error: {error?.message}</p>
     }
-    // if(error1){
-    //     errorElement1 = <p className="text-danger">Error: {error1?.message}</p>
-    // }
+    if(error1){
+        errorElement1 = <p className="text-danger">Error: {error1?.message}</p>
+    }
 
     const location = useLocation()
     let from = location.state?.from?.pathname || "/"
 
-    if(user){
+    if(user || user1){
         navigate(from, { replace: true })
     }
+
+    if(loading1 || sending){
+        return <Loading></Loading>
+    }
+
+    const resetPassword = async () => {
+        const email = emailRef.current.value;
+        sendPasswordResetEmail(auth, email)
+        .then(() => {
+            toast("Successfully Sent Your Reset Email", {
+              id: "resetEmailPassword",
+            });
+          })
+          .catch(() => {
+            toast("Sorry! Your Email input is empty", { id: "resetpassword" });
+          });
+      };
 
     return (
         <div className='login'>
@@ -82,13 +106,15 @@ const Login = () => {
             Forgot Password?{" "}
             <Button
                 className="text-white text-decoration-none btn bg-danger border-0 "
-                // onClick={resetPassword}
+                onClick={resetPassword}
             >
                 Reset Password
             </Button>
-            {/* <ToastContainer /> */}
             </p>
+            
             </div>
+            </Form>
+            
 
             {/* google login */}
             <button
@@ -97,7 +123,7 @@ const Login = () => {
             >
             <FontAwesomeIcon icon={faGoogle} />  Sign In with Google
             </button>
-        </Form>
+            <ToastContainer/>
         </div>
     );
 };

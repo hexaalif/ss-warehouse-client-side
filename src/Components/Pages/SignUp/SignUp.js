@@ -8,7 +8,7 @@ import './SignUp.css'
 import auth from '../../../firebase.init';
 
 const SignUp = () => {
-    const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth)
+    const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true })
     let navigate = useNavigate();
 
     const handleSignUp = (e) =>{
