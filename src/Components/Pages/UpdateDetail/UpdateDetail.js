@@ -8,13 +8,13 @@ const UpdateDetail = () => {
     const { updateId } = useParams();
     const [update] = useUpdateDetail(updateId)
     const [item, setItem] = useState([])
-    // const [refresh, setRefresh] = useState(0)
+    const [refresh, setRefresh] = useState(0)
 
     useEffect(() =>{
         fetch(`http://localhost:5000/update/${updateId}`)
         .then(res => res.json())
         .then(data => setItem(data))
-    }, [updateId, item])
+    }, [updateId, item, refresh])
 
     const handleAdd = e =>{
         e.preventDefault()
@@ -56,7 +56,6 @@ const UpdateDetail = () => {
           const updatedItem = {
             quantity
           };
-          console.log(updatedItem)
     
           fetch(`http://localhost:5000/update/${id}`,{
             method: "PUT",
@@ -68,7 +67,7 @@ const UpdateDetail = () => {
             .then((response) => response.json())
             .then((json) => console.log(json));
     
-        //   setRefresh(refresh + 1);
+          setRefresh(refresh + 1);
           toast.success("Delivery success");
         }
       };

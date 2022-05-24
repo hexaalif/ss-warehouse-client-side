@@ -1,7 +1,7 @@
 # SS-WAREHOUSE
 
 ---
-Short Description: this website is based on warehouse where you can get many items in different different collections.
+Short Description: this website is based on warehouse where you can add, restock, manage many items in different different collections.
 ---
 
 ---
@@ -10,6 +10,11 @@ live link:
 
 ---
 5 main points to mention:
+- Log In authentication applied
+- Updating a item was used in RequireAuth
+- you can restock items by adding quantity
+- you can deliver item by clicking delivered button
+- In add item, you can add new items too.
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
