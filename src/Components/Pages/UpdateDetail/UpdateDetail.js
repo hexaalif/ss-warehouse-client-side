@@ -11,7 +11,7 @@ const UpdateDetail = () => {
     const [refresh, setRefresh] = useState(0)
 
     useEffect(() =>{
-        fetch(`http://localhost:5000/update/${updateId}`)
+        fetch(`https://secure-plains-24139.herokuapp.com/update/${updateId}`)
         .then(res => res.json())
         .then(data => setItem(data))
     }, [updateId, item, refresh])
@@ -30,7 +30,7 @@ const UpdateDetail = () => {
             quantity
           };
 
-        fetch(`http://localhost:5000/update/${item._id}`, {
+        fetch(`https://secure-plains-24139.herokuapp.com/update/${item._id}`, {
             method: "PUT",
             headers: {
               "Content-type": "application/json",
@@ -57,7 +57,7 @@ const UpdateDetail = () => {
             quantity
           };
     
-          fetch(`http://localhost:5000/update/${id}`,{
+          fetch(`https://secure-plains-24139.herokuapp.com/update/${id}`,{
             method: "PUT",
             headers: {
               "Content-type": "application/json",

@@ -14,6 +14,7 @@ import AddItem from './Components/Pages/AddItem/AddItem';
 import ManageItem from './Components/Pages/ManageItem/ManageItem';
 import MyItem from './Components/Pages/MyItem/MyItem';
 import { ToastContainer } from 'react-bootstrap';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (

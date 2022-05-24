@@ -4,7 +4,7 @@ const useUpdate = () =>{
     const [update, setUpdate] = useState([])
 
     useEffect(() =>{
-        const url = `http://localhost:5000/update`
+        const url = `https://secure-plains-24139.herokuapp.com/update`
         fetch(url)
         .then(res => res.json())
         .then(data => setUpdate(data))
