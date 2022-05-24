@@ -5,7 +5,7 @@ Short Description: this website is based on warehouse where you can add, restock
 ---
 
 ---
-live link: 
+live link: https://ss-warehouse-f2c69.web.app
 ---
 
 ---
